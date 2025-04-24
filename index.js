@@ -1,4 +1,13 @@
 require("dotenv").config();
+const express = require("express");        // ← ajout pour Railway
+const app = express();                     // ← création de l’app HTTP
+
+// --- Petit serveur HTTP pour Railway (garde le bot « réveillé ») ---
+app.get("/", (_, res) => res.send("Bot Pokémon en ligne !"));
+app.listen(process.env.PORT || 3000, () => {
+  console.log("🌐 Serveur HTTP démarré sur le port", process.env.PORT || 3000);
+});
+
 const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
@@ -22,6 +31,7 @@ process.on("unhandledRejection", (reason, p) =>
 process.on("uncaughtException", (err) =>
   console.error("💀 Uncaught Exception thrown:", err)
 );
+
 
 // --- Répertoires et fichiers ---
 const GUILD_ID        = process.env.GUILD_ID;
