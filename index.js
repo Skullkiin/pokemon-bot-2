@@ -1,4 +1,11 @@
 require("dotenv").config();
+// ── AJOUT DEBUG ─────────────────────────────────────────────────
+console.log("▶︎ DEBUG env:", {
+  DISCORD_TOKEN: process.env.DISCORD_TOKEN ? "[OK]" : "[MISSING]",
+  GUILD_ID: process.env.GUILD_ID ? process.env.GUILD_ID : "[MISSING]",
+});
+// ────────────────────────────────────────────────────────────────
+
 const express = require("express"); // ← ajout pour Railway
 const app = express(); // ← création de l’app HTTP
 
